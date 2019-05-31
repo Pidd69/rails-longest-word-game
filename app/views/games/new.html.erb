@@ -1,0 +1,18 @@
+<h1>Longest word</h1>
+<p>What is the longest word you can find with these letters?</p>
+
+<div class="letter_list">
+<% @letters.each do |letter| %>
+<div class="letter"><%= letter %></div>
+<% end %>
+</div>
+<br>
+<% @start_time = Time.now %>
+<form action="score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters.join(' ') %>
+  <%= hidden_field_tag :start_time, @start_time.to_i %>
+  <input class="input" type="text" name="guess" placeholder="Your guess">
+  <input class="btn" type="submit" value="Check score">
+</form>
+
